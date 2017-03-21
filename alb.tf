@@ -19,7 +19,7 @@ resource "aws_alb_listener" "alb" {
    }
 }
 resource "aws_alb_listener" "ssl-alb" {
-    count = "${var.cert == "" 0 ? 1}"
+    count = "${var.cert == "" ? 0 : 1}"
    load_balancer_arn = "${aws_alb.alb.arn}"
    port = "${var.sslport}"
    protocol = "HTTPS"
