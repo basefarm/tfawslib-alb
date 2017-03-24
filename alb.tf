@@ -48,6 +48,8 @@ resource "aws_security_group" "alb" {
         name            = "${var.nameprefix}"
     }
     vpc_id = "${var.vpc}"
+    name = "ALB ${var.nameprefix} access"
+    description = "Allows access to ALB ${var.nameprefix}"
 }
 resource "aws_security_group_rule" "alb_egress_01" {
   security_group_id = "${aws_security_group.alb.id}"
